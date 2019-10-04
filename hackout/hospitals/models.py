@@ -1,5 +1,5 @@
 from django.db import models
-from django.urls import reverse
+from django.urls import reverse_lazy
 
 
 class Hospital(models.Model):
@@ -19,3 +19,6 @@ class Entry(models.Model):
 
     def __str__(self):
         return f"{self.hospital} - {self.blood_group}"
+
+    def get_absolute_url(self):
+        return reverse_lazy("hospitals:hospital-detail", kwargs={"pk": self.hospital.pk})

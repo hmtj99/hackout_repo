@@ -1,0 +1,8 @@
+{% extends 'donors/base.html' %}
+{% block content %}
+    <form  method="post">
+        {% csrf_token %}
+        <p>Are You Sure You want to delete the entry?</p>
+        <input type="submit" value="Confirm">
+    </form>
+{% endblock content %}
