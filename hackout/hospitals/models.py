@@ -10,9 +10,6 @@ class Hospital(models.Model):
     def __str__(self):
         return self.name
 
-    def get_absolute_url(self):
-        return reverse("hospital_detail", kwargs={"pk": self.pk})
-
 
 class Entry(models.Model):
     blood_group = models.CharField(max_length=256)
