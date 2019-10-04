@@ -1,0 +1,13 @@
+{% extends 'donors/base.html' %}
+{% block content %}
+    <div class="jumbotron">
+        <h1>{{hospital.name}}</h1>
+        <h2>{{hospital.address}}</h2>
+        <hr>
+
+        <h2>Blood Bank Details</h2>
+        {% for entry in hospital.entry.all %}
+            <h2>{{entry}} - {{entry.quantity}} bags</h2>
+        {% endfor %}
+    </div>
+{% endblock content %}
