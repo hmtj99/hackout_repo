@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 
 class Donor(models.Model):
@@ -12,3 +13,6 @@ class Donor(models.Model):
     def __str__(self):
         name = f"{self.user.first_name} {self.user.last_name} - {self.blood_group}"
         return name
+
+    def get_absolute_url(self):
+        return reverse("donor-detail", kwargs={"pk": self.pk})
