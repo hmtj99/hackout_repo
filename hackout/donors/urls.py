@@ -5,5 +5,5 @@ app_name = 'donors'
 
 urlpatterns = [
     path('', DonorListView.as_view(), name="donor-list"),
-    path('donor/<int:pk>', DonorDetailView.as_view(), name="donor-detail")
+    path('<int:pk>', DonorDetailView.as_view(), name="donor-detail")
 ]
