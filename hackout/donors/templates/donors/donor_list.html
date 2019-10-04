@@ -2,7 +2,7 @@
 {% block content %}
     <div class="jumbotron">
         {% for donor in donor_list %}
-            <h3>{{donor.user.first_name}} {{donor.user.last_name}}</h3>
+            <h3><a href="{% url 'donors:donor-detail' pk=donor.pk %}">{{donor.user.first_name}} {{donor.user.last_name}}</a></h3>
             <h4>{{donor.blood_group}}</h4>
             <hr>
         {% endfor %}
