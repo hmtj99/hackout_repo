@@ -7,7 +7,10 @@
 
         <h2>Blood Bank Details</h2>
         {% for entry in hospital.entry.all %}
-            <h2>{{entry}} - {{entry.quantity}} bags</h2>
+            <h2>{{entry}} - {{entry.quantity}} bags</h2> 
+            <a href="{% url 'hospitals:entry-delete' pk=entry.pk %}" class='btn btn-danger'>Delete</a>
         {% endfor %}
     </div>
+
+    <a href="{% url 'hospitals:entry-create' %}" class='btn btn-primary'>Add New Entry</a>
 {% endblock content %}
