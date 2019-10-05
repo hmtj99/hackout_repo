@@ -1,7 +1,28 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from hospitals.models import Hospital, Entry
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, TemplateView, DeleteView
-from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, TemplateView, DeleteView, FormView
+from django.urls import reverse_lazy, reverse
+from hospitals.forms import SearchForm
+
+
+class SearchView(FormView):
+    form_class = SearchForm
+    template_name = "hospitals/index.html"
+
+    def form_valid(self, form):
+        self.form = form
+        return HttpResponseRedirect(self.get_success_url())
+
+    def get_success_url(self):
+        bg = self.form.cleaned_data['blood_group_input']
+        return reverse('hospitals:search', kwargs={'blood_group': bg})
+
+
+class EntryListView(ListView):
+    template_name = "hospitals/entry_list.html"
+
+    def get_queryset(self):
+        return Entry.objects.filter(blood_group=self.kwargs['blood_group'])
 
 
 class HospitalListView(ListView):

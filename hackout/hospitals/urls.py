@@ -1,10 +1,12 @@
 from django.urls import path
-from hospitals.views import HospitalListView, HospitalDetailView, HospitalCreateView, Thanks, EntryCreateView, EntrySuccessView, EntryUpdateView, EntryDeleteView
+from hospitals.views import HospitalListView, HospitalDetailView, HospitalCreateView, Thanks, EntryCreateView, EntrySuccessView, EntryUpdateView, EntryDeleteView, SearchView, EntryListView
 
 app_name = "hospitals"
 
 urlpatterns = [
-    path('', HospitalListView.as_view(), name="hospital-list"),
+    path('', SearchView.as_view(), name="index"),
+    path('<blood_group>', EntryListView.as_view(), name="search"),
+    path('hospitals', HospitalListView.as_view(), name="hospital-list"),
     path('hospital/<int:pk>', HospitalDetailView.as_view(), name="hospital-detail"),
     path('hospital/new', HospitalCreateView.as_view(), name="hospital-create"),
     path('thanks', Thanks.as_view(), name="thanks"),
