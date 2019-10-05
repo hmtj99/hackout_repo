@@ -3,9 +3,10 @@ from django.views.generic import DetailView, ListView, CreateView, FormView, Tem
 from django.contrib.auth.models import User
 from donors.models import Donor
 from donors.forms import DonorForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class DonorDetailView(DetailView):
+class DonorDetailView(DetailView, LoginRequiredMixin):
     model = Donor
     template_name = "donors/donor_detail.html"
 
