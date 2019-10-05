@@ -1,8 +1,26 @@
 {% extends 'donors/base.html' %}
 {% block content %}
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <form method="post">
         {% csrf_token %}
         {{form.as_p}}
-        <input type="submit" value="Submit">
+        <button class="btn btn-info" onclick='getLocation()'>Get Location</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+    <script>
+    latitude = document.getElementById("id_latitude");
+    longitude = document.getElementById("id_longitude");
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else { 
+            console.log("Geolocation is not supported by this browser.");
+        }
+    }
+
+    function showPosition(position){
+        latitude.setAttribute("value",position.coords.latitude);
+        longitude.setAttribute("value",position.coords.longitude);
+    }
+    </script>
 {% endblock content %}

@@ -17,9 +17,11 @@ BLOOD_GROUPS = (
 class DonorForm(UserCreationForm):
     blood_group = forms.ChoiceField(choices=BLOOD_GROUPS)
     phone = forms.IntegerField()
-    location = forms.CharField()
+    city = forms.CharField()
+    longitude = forms.FloatField()
+    latitude = forms.FloatField()
 
     class Meta:
         model = User
         fields = ['username', 'password1', 'password2',
-                  'first_name', 'last_name', 'phone', 'blood_group']
+                  'first_name', 'last_name', 'phone', 'blood_group', ]

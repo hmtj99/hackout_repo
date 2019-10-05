@@ -9,7 +9,9 @@ class Hospital(models.Model):
         User, on_delete=models.CASCADE, default=1, related_name="hospital")
     name = models.CharField(max_length=256)
     address = models.CharField(max_length=256)
-    location = models.CharField(max_length=300)
+    city = models.CharField(max_length=300)
+    longitude = models.FloatField(default=0.0)
+    latitude = models.FloatField(default=0.0)
 
     def __str__(self):
         return self.name

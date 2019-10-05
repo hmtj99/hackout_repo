@@ -34,16 +34,18 @@ class HospitalDetailView(DetailView):
 
 class HospitalCreateView(CreateView):
     model = Hospital
-    fields = ['name', 'address', 'location']
+    fields = ['name', 'address', 'city', 'latitude', 'longitude']
     template_name = "hospitals/hospital_create.html"
 
     def form_valid(self, form):
         this_name = form.cleaned_data['name']
         this_address = form.cleaned_data['address']
-        this_location = form.cleaned_data['location']
+        this_city = form.cleaned_data['city']
+        this_longitude = form.cleaned_data['longitude']
+        this_latitude = form.cleaned_data['latitude']
         current_user = self.request.user
         h = Hospital(user=current_user, name=this_name,
-                     address=this_address, location=this_location)
+                     address=this_address, city=this_city, longitude=this_longitude, latitude=this_latitude)
         h.save()
         return HttpResponseRedirect(reverse("hospitals:hospital-list-final"))
 

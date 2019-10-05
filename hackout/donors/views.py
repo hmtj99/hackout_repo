@@ -31,9 +31,11 @@ class DonorCreateView(FormView):
     def form_valid(self, form):
         phone = form.cleaned_data['phone']
         blood_group = form.cleaned_data['blood_group']
-        location = form.cleaned_data['location']
+        city = form.cleaned_data['city']
+        longitude = form.cleaned_data['longitude']
+        latitude = form.cleaned_data['latitude']
         new_user = form.save()
         d = Donor(user=new_user, blood_group=blood_group,
-                  location=location, phone=phone)
+                  city=city, phone=phone, longitude=longitude, latitude=latitude)
         d.save()
         return super().form_valid(form)

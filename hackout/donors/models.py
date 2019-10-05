@@ -8,7 +8,9 @@ class Donor(models.Model):
         User, on_delete=models.CASCADE, primary_key=True)
     blood_group = models.CharField(max_length=5)
     phone = models.BigIntegerField()
-    location = models.CharField(max_length=300)
+    city = models.CharField(max_length=300)
+    longitude = models.FloatField(default=0.0)
+    latitude = models.FloatField(default=0.0)
 
     def __str__(self):
         name = f"{self.user.first_name} {self.user.last_name} - {self.blood_group}"
