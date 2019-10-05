@@ -122,3 +122,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = 'hospitals:index'
+
+#Configurations for using GeoLite Database
+GEOIP_PATH = BASE_DIR + '/GeoLite2-City_20191001'
