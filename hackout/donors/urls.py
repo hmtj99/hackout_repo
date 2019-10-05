@@ -8,4 +8,5 @@ urlpatterns = [
     path('<int:pk>', DonorDetailView.as_view(), name="donor-detail"),
     path('new', DonorCreateView.as_view(), name="donor-create"),
     path('thanks', DonorRegThanksView.as_view(), name="thanks"),
+    path('<blood_group>', DonorListView.as_view(), name="search-donor")
 ]

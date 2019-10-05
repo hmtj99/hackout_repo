@@ -1,6 +1,7 @@
 {% extends 'donors/base.html' %}
 {% block content %}
-    <div class="jumbotron">
+<a href="{% url 'donors:search-donor' blood_group=view.kwargs.blood_group %}" class="btn btn-primary my-4">Search Donors</a>
+    <div class="jumbotron my-4">
         {% for entry in entry_list %}
             <h2>{{entry.hospital.name}}</h2>
             <h3>{{entry.blood_group}}</h3>

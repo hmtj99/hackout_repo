@@ -12,8 +12,10 @@ class DonorDetailView(DetailView, LoginRequiredMixin):
 
 
 class DonorListView(ListView):
-    model = Donor
     template_name = "donors/donor_list.html"
+
+    def get_queryset(self):
+        return Donor.objects.filter(blood_group=self.kwargs['blood_group'])
 
 
 class DonorRegThanksView(TemplateView):
