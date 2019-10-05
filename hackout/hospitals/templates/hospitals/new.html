@@ -1,0 +1,7 @@
+{% extends 'donors/base.html' %}
+{% block content %}
+    {% for hospital in hospitals %}
+        <h2><a href="{% url 'hospitals:hospital-detail' pk=hospital.pk %}">{{hospital.name}}</a></h2>
+    {% endfor %}
+    <a href="{% url 'hospitals:hospital-create' %}" class="btn btn-primary">Create New Hospital</a>
+{% endblock content %}

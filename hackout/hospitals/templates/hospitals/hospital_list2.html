@@ -1,0 +1,7 @@
+{% extends 'donors/base.html' %}
+{% block content %}
+    <h1></h1>
+    {% for hospital in object_list %}
+        <h1>{{hospital.name}}</h1>
+    {% endfor %}
+{% endblock content %}

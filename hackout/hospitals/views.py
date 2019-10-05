@@ -3,6 +3,7 @@ from hospitals.models import Hospital, Entry
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, TemplateView, DeleteView, FormView
 from django.urls import reverse_lazy, reverse
 from hospitals.forms import SearchForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class SearchView(FormView):
@@ -25,12 +26,8 @@ class EntryListView(ListView):
         return Entry.objects.filter(blood_group=self.kwargs['blood_group'])
 
 
-class HospitalListView(ListView):
-    model = Hospital
-    template_name = "hospitals/hospital_list.html"
-
-
 class HospitalDetailView(DetailView):
+    login_url = 'donor_login'
     model = Hospital
     template_name = "hospitals/hospital_detail.html"
 
@@ -39,32 +36,46 @@ class HospitalCreateView(CreateView):
     model = Hospital
     fields = ['name', 'address', 'location']
     template_name = "hospitals/hospital_create.html"
-    success_url = reverse_lazy('hospitals:thanks')
+
+    def form_valid(self, form):
+        this_name = form.cleaned_data['name']
+        this_address = form.cleaned_data['address']
+        this_location = form.cleaned_data['location']
+        current_user = self.request.user
+        h = Hospital(user=current_user, name=this_name,
+                     address=this_address, location=this_location)
+        h.save()
+        return HttpResponseRedirect(reverse("hospitals:hospital-list-final"))
 
 
-class EntryCreateView(CreateView):
+class EntryCreateView(LoginRequiredMixin, CreateView):
+    login_url = 'donor_login'
     model = Entry
     fields = ['blood_group', 'hospital', 'quantity']
     template_name = "hospitals/entry_create.html"
-
-
-class Thanks(TemplateView):
-    template_name = "hospitals/thanks.html"
 
 
 class EntrySuccessView(TemplateView):
     template_name = "hospitals/entry_created.html"
 
 
-class EntryUpdateView(UpdateView):
+class EntryUpdateView(LoginRequiredMixin, UpdateView):
+    login_url = 'donor_login'
     model = Entry
     template_name = "hospitals/entry_update.html"
     fields = ['quantity']
 
 
-class EntryDeleteView(DeleteView):
+class EntryDeleteView(LoginRequiredMixin, DeleteView):
+    login_url = 'donor_login'
     model = Entry
     template_name = "hospitals/entry_delete.html"
 
     def get_success_url(self):
         return reverse_lazy('hospitals:hospital-detail', kwargs={'pk': self.object.hospital.pk})
+
+
+def HospitalView(request):
+    current_user = request.user
+    hospitals = Hospital.objects.filter(user=current_user)
+    return render(request, "hospitals/new.html", context={"hospitals": hospitals})

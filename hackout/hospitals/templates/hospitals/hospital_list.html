@@ -1,6 +1,7 @@
 {% extends 'donors/base.html' %}
 {% block content %}
-    <div class="jumbotron">
+    <div>
+    <h1>List of hospitals</h1>
         {% for hospital in hospital_list %}
             <h2><a href="{% url 'hospitals:hospital-detail' pk=hospital.pk %}">{{hospital.name}}</h2></a>
             <h3>{{hospital.address}}</h3>
