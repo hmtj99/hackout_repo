@@ -1,0 +1,64 @@
+body{
+    background-color: white; 
+    font-family: 'Open Sans', sans-serif;
+    height: 100vh;
+    width: 100%;
+    margin: 0%;
+    padding: 0%;
+    overflow-x: hidden;
+}
+a{
+    color: #ecf0f1e0;
+    font-weight: 500;
+    text-decoration: none;
+}
+a:hover{
+    color: white;
+    text-decoration: none;
+}
+.footer{
+    background-color: #111;
+    color: rgba(255, 255, 255, 0.747);
+    font-weight: 400;
+}
+.footer a{
+    font-weight: 400;
+}
+img{
+    width: 100%;
+    overflow: hidden;
+}
+.request{
+    min-height: 70vh; 
+    background-image: url("../images/blood_back.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+}
+@media (max-width:600px){
+.headingRequest{
+    font-size: 2rem !important;
+}
+.request{
+    min-height: 40vh;
+    background-image: none;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+}
+.headingSupporters{
+    font-size: 2rem !important;
+    margin-top: 20px !important;
+}
+}
+.headingRequest{
+    font-size: 4rem;    
+}
+.headingSupporters{
+    margin: 100px 0px;
+    font-size: 4rem;
+}
+.container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container {
+    width: 100%;
+    }
+/* red shade: #e74c3c */

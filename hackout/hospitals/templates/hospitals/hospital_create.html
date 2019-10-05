@@ -1,9 +1,10 @@
 {% extends 'donors/base.html' %}
 {% block content %}
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <form  method="post">
         {% csrf_token %}
         {{form.as_p}}
-        <button onclick="getLocation()", class="btn btn-info">Get Location</button>
+        <button onclick="getLocation()", class="btn btn-info" id="getLocationBtn">Get Location</button>
         <button type="submit" value="Submit">Submit</button>
     </form>
     <script>
@@ -20,6 +21,12 @@
     function showPosition(position){
         latitude.setAttribute("value",position.coords.latitude);
         longitude.setAttribute("value",position.coords.longitude);
+        latitude.style.display = 'none';
+        longitude.style.display = 'none';
+        document.getElementById("getLocationBtn").style.display = 'none';
+        $('label[for="id_longitude"]').hide ();
+        $('label[for="id_latitude"]').hide ();
     }
+    window.onload = getLocation();
     </script>
 {% endblock content %}

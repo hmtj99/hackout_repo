@@ -3,8 +3,17 @@
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <form method="post">
         {% csrf_token %}
-        {{form.as_p}}
-        <button class="btn btn-info" onclick='getLocation()'>Get Location</button>
+        <form method="post">
+            <p><label for="id_blood_group_input">Blood group input:</label> <select name="blood_group_input" id="id_blood_group_input">
+        <option value="A+">A+</option>
+        <option value="A-">A-</option>
+        <option value="AB+">AB+</option>
+        <option value="AB-">AB-</option>
+        <option value="B+">B+</option>
+        <option value="B-">B-</option>
+        <option value="O+">O+</option>
+        <option value="O-">O-</option>
+        <button class="btn btn-info" onclick='getLocation()' id="getLocationBtn">Get Location</button>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     <script>
@@ -21,6 +30,13 @@
     function showPosition(position){
         latitude.setAttribute("value",position.coords.latitude);
         longitude.setAttribute("value",position.coords.longitude);
+        latitude.style.display = 'none';
+        longitude.style.display = 'none';
+        document.getElementById("getLocationBtn").style.display = 'none';
+        $('label[for="id_longitude"]').hide ();
+        $('label[for="id_latitude"]').hide ();
     }
+
+    window.onload = getLocation();
     </script>
 {% endblock content %}
