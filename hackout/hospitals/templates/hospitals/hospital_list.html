@@ -1,6 +1,5 @@
 {% extends 'donors/base.html' %}
 {% block content %}
-    <div>
     <h1>List of hospitals</h1>
         {% for hospital in hospital_list %}
             <h2><a href="{% url 'hospitals:hospital-detail' pk=hospital.pk %}">{{hospital.name}}</h2></a>
@@ -8,5 +7,4 @@
             <h4>{{hospital.location}}</h4>
             <hr>
         {% endfor %}
-    </div>
 {% endblock content %}

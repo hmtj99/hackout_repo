@@ -1,8 +1,17 @@
 {% extends 'donors/base.html' %}
-{% block content %} 
-    <form  method="post">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button type="submit">Submit</button>
-    </form>
+{% load static from staticfiles %}
+
+{% block content %}
+<div class="back1 col-xs-1 center-block">
+    <div class="myform">
+        <center>
+            <h1 class="text-center my-4">Entry</h1>
+            <form  method="post">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button type="submit">Submit</button>
+            </form>
+        </center>
+    </div> 
+</div>
 {% endblock content %}  

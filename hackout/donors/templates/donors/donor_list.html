@@ -1,9 +1,11 @@
 {% extends 'donors/base.html' %}
 {% block content %}
-    <div class="jumbotron">
+    <br>
+    <div class="pt-4 px-5 card mx-auto" style="max-width: 68%;">
         {% for donor in donor_list %}
-            <h3><a href="{% url 'donors:donor-detail' pk=donor.pk %}">{{donor.user.first_name}} {{donor.user.last_name}}</a></h3>
+            <h3 id="name1"><a href="{% url 'donors:donor-detail' pk=donor.pk %}" style="color: rgb(53, 46, 46)">{{donor.user.first_name}} {{donor.user.last_name}}</a></h3>
             <h4>{{donor.blood_group}}</h4>
+            <br>
             <hr>
         {% endfor %}
     </div>

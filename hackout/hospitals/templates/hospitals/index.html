@@ -1,10 +1,88 @@
 {% extends 'donors/base.html' %}
+{% load static from staticfiles %}
 {% block content %}
-    <form method="post">
+    <!-- Request Blood -->
+    <div class="request text-center pt-5">
+        <form method="post">
         {% csrf_token %}
-        {{form.as_p}}
-        <input type="submit" value="Search">
-    </form>
+        <center>
+            <div class="input-group mb-1 mx-auto" style="max-width: 20%;">
+                <div class="input-group-prepend">
+                    <label for="id_blood_group_input" class="input-group-text" style="font-size: 1.3em;">Blood group input:</label> 
+                </div>
+                <center>
+                    <select name="blood_group_input" id="id_blood_group_input" class="custom-select" style="height: 100%; padding:1em;">
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                </select>
+                </center>
+                
+                <input type="hidden" name="longitude" id="id_longitude"><input type="hidden" name="latitude" id="id_latitude">
+            </div>
+        </center>
+            <input type="submit" value="Search" class="btn btn-light border-danger mx-2 btn-lg">
+        </form>
+    </div>
+
+    <!-- our supporters -->
+    <div class="card supporters text-center" style="width: 100%">
+        <div class="card-body">
+            <h1 class="headingSupporters">Our Supporters</h1>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <img src="{% static 'Digital_India_empower_youth.jpg' %}" alt="Digital_India_empower_youth" class="col-md-4 col-sm-6">
+                <img src="{% static 'logo-who.jpg' %}" alt="WHO" class="col-md-6 col-sm-6">
+                <img src="{% static 'billandmalindagates.png' %}" class="col-md-4 col-sm-6 mx-auto" alt="bill and malinda gates foundation">
+            </div>
+        </div>
+    </div>
+
+    <div class="card text-center mb-5" id="motto" style="width: 100%;">
+        <div class="card-body">
+            <h1 class="card-title my-5">Our Motto</h1>
+            <div class="container">
+                <p class="card-text mb-5">Our motto is to decrease the death rate due to unavailability of blood when needed by using best in class technologies. We are devoted towards achieving better future in healthcare sector using trusted and compassionate care. We want to grow ourselves in a healthy way which will provide us better result focused solutions via help of client feedback. We believe in proving ourselves as chosen for excellence.</p>
+            </div>
+        </div>
+    </div>
+
+    <!--footer-->
+    <div class="footer">
+        <div class="container">
+            <div class="row text-center pt-3">
+                <div class="col-md-4 col-sm-12">
+                    <p><a href="#"><b> Utility</b>
+                        </a></p>
+                    <p><a href="#">Login</a></p>
+                    <p><a href="#">Register</a></p>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <p><a href="#"><b>About</b>
+                        </a></p>
+                    <p><a href="#">DA_devs</a></p>
+                    <p><a href="contactUs.html">Contact Us</a></p>
+                    <p><a href="feedback.html">Feedback</a></p>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <p><a href="#"><b>Terms & Condition</b>
+                        </a></p>
+                    <p><a href="#">Terms of Use</a></p>
+                    <p><a href="#">Privacy Policy</a></p>
+                    <p><a href="#">Service Policy</a></p>
+                </div>
+            </div>
+            <div class="container ml-auto py-3 text-center">
+                <p>&copy; All rights reserved by DA_devs - 2019</p>
+            </div>
+        </div>
+    </div>
+
     <script>
     latitude = document.getElementById("id_latitude");
     longitude = document.getElementById("id_longitude");

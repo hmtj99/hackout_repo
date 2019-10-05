@@ -1,8 +1,14 @@
 {% extends 'donors/base.html' %}
 {% block content %}
-    <form method="post">
+    <div class="background1">
+         <form method="post">
         {% csrf_token %}
-        {{form.as_p}}
-        <input type="submit" value="Login" class="btn btn-primary">
-    </form>
+        <div class="container4">
+            <h1 class="text-center my-4">Sign In</h1>
+            {{form.as_p}}
+            <input type="submit" value="Login" class="btn btn-primary">
+        </div>
+        </form>
+    </div>
+   
 {% endblock content %}

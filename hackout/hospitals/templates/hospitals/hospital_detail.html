@@ -1,16 +1,16 @@
 {% extends 'donors/base.html' %}
 {% block content %}
-    <div class="jumbotron">
-        <h1>{{hospital.name}}</h1>
-        <h2>{{hospital.address}}</h2>
-        <hr>
+    <div class="jumbotron pl-5">
+        <h1 class="pl-5">{{hospital.name}}</h1>
+        <h3 class="pl-5">{{hospital.address}}</h2>
+        <hr class="pl-5">
 
-        <h2>Blood Bank Details</h2>
+        <h3 class="pl-5">Blood Bank Details</h2>
         {% for entry in hospital.entry.all %}
-            <h2>{{entry}} - {{entry.quantity}} bags</h2> 
-            <a href="{% url 'hospitals:entry-delete' pk=entry.pk %}" class='btn btn-danger'>Delete</a>
+            <h2 class="pl-5">{{entry}} - {{entry.quantity}} bags</h2>
+            <a href="{% url 'hospitals:entry-delete' pk=entry.pk %}" class='btn btn-danger ml-5'>Delete</a><hr>
         {% endfor %}
     </div>
-
-    <a href="{% url 'hospitals:entry-create' %}" class='btn btn-primary'>Add New Entry</a>
+    <center><a href="{% url 'hospitals:entry-create' %}" class='btn btn-primary'>Add New Entry</a></center>
+    
 {% endblock content %}

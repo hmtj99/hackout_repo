@@ -2,7 +2,9 @@
 {% block content %}
     <form  method="post">
         {% csrf_token %}
-        <p>Are You Sure You want to delete the entry?</p>
-        <input type="submit" value="Confirm">
+        <center>
+            <h2 class="mt-5">Are You Sure You want to delete the entry?</p>
+            <input type="submit" value="Confirm" class="btn btn-dark btn-lg nav-item mx-2 active">
+        </center>
     </form>
 {% endblock content %}

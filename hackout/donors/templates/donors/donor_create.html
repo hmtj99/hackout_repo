@@ -1,21 +1,14 @@
 {% extends 'donors/base.html' %}
 {% block content %}
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <form method="post">
-        {% csrf_token %}
+    <div class="container3">
         <form method="post">
-            <p><label for="id_blood_group_input">Blood group input:</label> <select name="blood_group_input" id="id_blood_group_input">
-        <option value="A+">A+</option>
-        <option value="A-">A-</option>
-        <option value="AB+">AB+</option>
-        <option value="AB-">AB-</option>
-        <option value="B+">B+</option>
-        <option value="B-">B-</option>
-        <option value="O+">O+</option>
-        <option value="O-">O-</option>
-        <button class="btn btn-info" onclick='getLocation()' id="getLocationBtn">Get Location</button>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+            {% csrf_token %}
+            {{form.as_p}}
+            <button onclick="getLocation()", class="btn btn-info" id="getLocationBtn">Get Location</button>
+            <button type="submit" value="Submit" class="btn btn-lg my-3 btn-dark mx-5">Submit</button>
+        </form>
+    </div>
     <script>
     latitude = document.getElementById("id_latitude");
     longitude = document.getElementById("id_longitude");
