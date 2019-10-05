@@ -5,4 +5,23 @@
         {{form.as_p}}
         <input type="submit" value="Search">
     </form>
+    <script>
+    latitude = document.getElementById("id_latitude");
+    longitude = document.getElementById("id_longitude");
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else { 
+            console.log("Geolocation is not supported by this browser.");
+        }
+    }
+
+    function showPosition(position){
+        latitude.setAttribute("value",position.coords.latitude);
+        longitude.setAttribute("value",position.coords.longitude);
+        console.log(latitude.value)
+        console.log(longitude.value)
+    }
+    window.onload = getLocation();
+    </script>
 {% endblock content %}

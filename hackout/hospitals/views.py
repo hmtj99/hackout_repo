@@ -16,6 +16,8 @@ class SearchView(FormView):
 
     def get_success_url(self):
         bg = self.form.cleaned_data['blood_group_input']
+        longitude = self.form.cleaned_data['longitude']
+        latitude = self.form.cleaned_data['latitude']
         return reverse('hospitals:search', kwargs={'blood_group': bg})
 
 

@@ -15,3 +15,5 @@ BLOOD_GROUPS = (
 
 class SearchForm(forms.Form):
     blood_group_input = forms.ChoiceField(choices=BLOOD_GROUPS)
+    longitude = forms.FloatField(widget=forms.HiddenInput())
+    latitude = forms.FloatField(widget=forms.HiddenInput())
